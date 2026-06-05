@@ -8,12 +8,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { addToCart, cartItemsInterface } from "@/features/cart/catSlice";
-import { Badge } from "lucide-react";
 import Image from "next/image";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/store/hooks";
+import { Badge } from "./ui/badge";
 
-export function CardComponent({ props }: { props: cartItemsInterface }) {
-  const dispatch = useDispatch();
+export function CardProductComponent({ props }: { props: cartItemsInterface }) {
+  const dispatch = useAppDispatch();
 
   return (
     <Card className="relative mx-auto w-full max-w-sm pt-0">
@@ -26,12 +26,13 @@ export function CardComponent({ props }: { props: cartItemsInterface }) {
       />
       <CardHeader>
         <CardAction>
-          <Badge>${props.price}</Badge>
+          <Badge variant="secondary">${props.price}</Badge>
         </CardAction>
         <CardTitle>{props.name}</CardTitle>
       </CardHeader>
       <CardFooter>
         <Button
+          type="button"
           onClick={() => dispatch(addToCart(props))}
           className="cursor-pointer"
         >

@@ -3,15 +3,14 @@
 
 import { Button } from "@/components/ui/button";
 import { addToCart, removeFromCart } from "@/features/cart/catSlice";
-import { useAppSelector } from "@/store/hooks";
-import { useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 
 export default function CartDetailComponent() {
   const { items, totalQuantity, totalAmount } = useAppSelector(
     (state) => state.cart,
   );
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   return (
     <div className="max-w-5xl mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6">Shopping Cart</h1>
@@ -49,7 +48,7 @@ export default function CartDetailComponent() {
                   <div className="flex-1">
                     <h2 className="font-semibold text-lg">{item.name}</h2>
                     <p className="text-gray-600">
-                      ${item.price} × {item.quantity}
+                      ${item.price} x {item.quantity}
                     </p>
                   </div>
 
@@ -57,13 +56,15 @@ export default function CartDetailComponent() {
                     ${(item.price * item.quantity).toFixed(2)}
                   </div>
                   <Button
+                    type="button"
                     className="cursor-pointer"
                     onClick={() => dispatch(addToCart(item))}
                   >
                     Add x1
                   </Button>
                   <Button
-                    onClick={() => dispatch(removeFromCart(item))}
+                    type="button"
+                    onClick={() => dispatch(removeFromCart(item.id))}
                     className="bg-red-500 cursor-pointer"
                   >
                     Remove x1

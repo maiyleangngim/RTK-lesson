@@ -1,4 +1,4 @@
-import { CardComponent } from "@/components/CardProductComponent";
+import { CardProductComponent } from "@/components/CardProductComponent";
 import { cartItemsInterface } from "@/features/cart/catSlice";
 
 export default function ProductPage() {
@@ -73,7 +73,7 @@ export default function ProductPage() {
     <div className="grid grid-cols-4 gap-5">
       {items.map((item) => (
         <div key={item.id}>
-          <CardComponent props={item} />
+          <CardProductComponent props={item} />
         </div>
       ))}
     </div>

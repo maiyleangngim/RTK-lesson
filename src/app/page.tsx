@@ -7,7 +7,6 @@ export default function Home() {
     <div className='p-8'>
       <ButtonComponent/>
       <GetCountComponent/>
-      <CartDetailComponent/>
     </div>
   );
 }

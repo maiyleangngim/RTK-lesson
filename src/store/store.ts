@@ -4,14 +4,19 @@
 
 import { cartSlice } from "@/features/cart/catSlice";
 import { countSlice } from "@/features/countSlice/countSlice";
+import { ecommerceApi } from "@/services/ecommerceApi";
 import { configureStore } from "@reduxjs/toolkit";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       count: countSlice.reducer,
-      cart:cartSlice.reducer
-    }
+      cart: cartSlice.reducer,
+      [ecommerceApi.reducerPath]: ecommerceApi.reducer
+    },
+
+    middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(ecommerceApi.middleware),
   })
 }
 
