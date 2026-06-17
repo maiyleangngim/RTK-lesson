@@ -1,9 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Button } from "@/components/ui/button";
 import { addToCart, removeFromCart } from "@/features/cart/catSlice";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import Image from "next/image";
 
 export default function CartDetailComponent() {
   const { items, totalQuantity, totalAmount } = useAppSelector(
@@ -12,7 +12,7 @@ export default function CartDetailComponent() {
 
   const dispatch = useAppDispatch();
   return (
-    <div className="max-w-5xl mx-auto p-6">
+    <div className="max-w-5xl mx-auto p-16">
       <h1 className="text-3xl font-bold mb-6">Shopping Cart</h1>
 
       <div className="bg-white shadow rounded-lg p-4 mb-6">
@@ -39,7 +39,7 @@ export default function CartDetailComponent() {
                   key={item.id}
                   className="flex items-center gap-4 bg-white shadow rounded-lg p-4"
                 >
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.name}
                     className="w-24 h-24 object-cover rounded"
