@@ -24,6 +24,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -34,6 +35,7 @@ export function DataTable<TData extends { [key: string]: any }, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+  const router = useRouter();
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = React.useState("");
 
@@ -61,9 +63,7 @@ export function DataTable<TData extends { [key: string]: any }, TValue>({
       const slug = String(row.original.slug ?? "").toLowerCase();
       const id = String(row.original.id ?? "");
       const price = String(row.original.price ?? "");
-      const category = String(
-        row.original.category?.name ?? ""
-      ).toLowerCase();
+      const category = String(row.original.category?.name ?? "").toLowerCase();
 
       return (
         title.includes(search) ||
@@ -99,7 +99,7 @@ export function DataTable<TData extends { [key: string]: any }, TValue>({
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
-                          header.getContext()
+                          header.getContext(),
                         )}
                   </TableHead>
                 ))}
@@ -110,12 +110,18 @@ export function DataTable<TData extends { [key: string]: any }, TValue>({
           <TableBody>
             {table.getRowModel().rows.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id}>
+                <TableRow
+                  key={row.id}
+                  onClick={() =>
+                    router.push(`/categories/${row.original.id}`)
+                  }
+                  className="cursor-pointer hover:bg-muted/50"
+                >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext()
+                        cell.getContext(),
                       )}
                     </TableCell>
                   ))}

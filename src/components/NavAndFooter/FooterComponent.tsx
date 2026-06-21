@@ -38,6 +38,7 @@ export default function FooterComponent() {
                   decoding="async"
                   data-nimg={1}
                   style={{ color: "transparent" }}
+                  className="w-auto h-auto"
                   src="https://www.englishyaari.com/img/facebook.svg"
                 />
               </Link>
@@ -50,6 +51,7 @@ export default function FooterComponent() {
                   decoding="async"
                   data-nimg={1}
                   style={{ color: "transparent" }}
+                  className="w-auto h-auto"
                   src="https://www.englishyaari.com/img/linkdin.svg"
                 />
               </Link>
@@ -62,6 +64,7 @@ export default function FooterComponent() {
                   decoding="async"
                   data-nimg={1}
                   style={{ color: "transparent" }}
+                  className="w-auto h-auto"
                   src="https://www.englishyaari.com/img/instagram1.svg"
                 />
               </Link>
@@ -74,6 +77,7 @@ export default function FooterComponent() {
                   decoding="async"
                   data-nimg={1}
                   style={{ color: "transparent" }}
+                  className="w-auto h-auto"
                   src="https://www.englishyaari.com/img/twitter.svg"
                 />
               </a>
@@ -90,6 +94,7 @@ export default function FooterComponent() {
                   decoding="async"
                   data-nimg={1}
                   style={{ color: "transparent" }}
+                  className="w-auto h-auto"
                   src="https://www.englishyaari.com/img/youtube.svg"
                 />
               </Link>
